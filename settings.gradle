@@ -1,0 +1,10 @@
+rootProject.name = 'root'
+
+include 'template'
+
+rootProject.children.each { project ->
+    String projectFileName = project.name.replaceAll("\\p{Upper}") { "-${it.toLowerCase()}" }
+    String projectDirName = "projects/$projectFileName"
+    project.projectDir = new File(settingsDir, projectDirName)
+    project.buildFileName = "${projectFileName}.gradle"
+}
