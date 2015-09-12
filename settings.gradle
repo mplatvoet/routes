@@ -1,6 +1,6 @@
 rootProject.name = 'root'
 
-include 'template'
+include 'routes'
 
 rootProject.children.each { project ->
     String projectFileName = project.name.replaceAll("\\p{Upper}") { "-${it.toLowerCase()}" }
