@@ -1,10 +1,11 @@
 buildscript {
-    ext.kotlinVersion = '0.12.613'
+    ext.kotlinVersion = '0.1-SNAPSHOT'
     ext.extraConfVersion = '2.2.+'
 
     repositories {
         mavenCentral()
         jcenter()
+        maven { url 'http://oss.sonatype.org/content/repositories/snapshots' }
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
@@ -25,7 +26,10 @@ allprojects {
 
 
 subprojects {
-    repositories { mavenCentral() }
+    repositories {
+        mavenCentral()
+        maven { url 'http://oss.sonatype.org/content/repositories/snapshots' }
+    }
 
     apply plugin: 'optional-base'
     apply plugin: 'provided-base'
@@ -40,7 +44,7 @@ subprojects {
         compile "org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}", optional
 
         testCompile "junit:junit:${junitVersion}"
-    }    
+    }
 }
 
 task wrapper(type: Wrapper) {
