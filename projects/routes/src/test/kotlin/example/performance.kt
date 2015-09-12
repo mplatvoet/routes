@@ -15,7 +15,9 @@ fun main(args: Array<String>) {
 
     routes.add {
         (1..entries).forEach {
-            get(randomPath(length), it)
+            val randomPath = randomPath(length)
+            //println(randomPath)
+            get(randomPath, it)
         }
 
         get("/a/b/*/d", 1)
@@ -41,7 +43,7 @@ fun main(args: Array<String>) {
 }
 
 
-val chars = "abcdefghijklmnopqrstuvw".toArrayList().map { "$it" } + listOf("*, **")
+val chars = "abcdefghijk".toArrayList().map { "$it" } + listOf("*", "**")
 val random = Random()
 fun randomPath(length: Int): String {
     val segments = random.nextInt(length) + 1
