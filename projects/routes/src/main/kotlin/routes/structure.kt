@@ -222,6 +222,10 @@ class MultiWildcard<T : Any>() : Node<T>() {
     override fun hashCode(): Int = 31
 
     override fun findValue(path: Path, mapping: Mapping): T? {
+        if (value != null) {
+            //has a value. is an end path so matches all
+            return value
+        }
         var localPath = path
         do {
             val subPath = localPath.subPath

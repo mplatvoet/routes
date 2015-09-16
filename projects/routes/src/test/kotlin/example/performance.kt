@@ -16,15 +16,12 @@ fun main(args: Array<String>) {
     routes.add {
         (1..entries).forEach {
             val randomPath = randomPath(length)
-            //println(randomPath)
+            //println("$it: $randomPath")
             get(randomPath, it)
         }
 
-        get("/a/b/*/d", 1)
-        get("/a/**/d/**/g", 2)
-        get("/a/**/d/**/g/*/**", 3)
     }
-    println("${entries + 3} routes added, start timing lookups:")
+    println("${entries} routes added, start timing lookups:")
 
     (1..attempts).forEach {
         val start = System.currentTimeMillis()
